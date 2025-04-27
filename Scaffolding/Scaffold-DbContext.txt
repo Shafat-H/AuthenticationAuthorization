@@ -1,0 +1,4 @@
+﻿
+**** Write Scaffold **********************
+//Windows
+scaffold-DbContext "Data Source=shafat-559160;Initial Catalog=MANAGEMENT;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite; Integrated Security=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir "Models" -ContextDir "Contexts" -Context "Context"  -t Students,Courses,Enrollments,Instructors,Classrooms,CourseAssignments,Users -f
