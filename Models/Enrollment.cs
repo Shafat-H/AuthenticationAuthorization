@@ -13,7 +13,7 @@ public partial class Enrollment
 
     public DateOnly EnrollmentDate { get; set; }
 
-    public string? Grade { get; set; }
+    public string Grade { get; set; }
 
     public bool IsActive { get; set; }
 }

@@ -7,9 +7,9 @@ public partial class Course
 {
     public long CourseId { get; set; }
 
-    public string CourseName { get; set; } = null!;
+    public string CourseName { get; set; }
 
-    public string? CourseDescription { get; set; }
+    public string CourseDescription { get; set; }
 
     public long Credits { get; set; }
 

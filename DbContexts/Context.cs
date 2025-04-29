@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using AuthenticationAuthorization.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuthenticationAuthorization.Contexts;
+namespace AuthenticationAuthorization.DbContexts;
 
 public partial class Context : DbContext
 {
@@ -43,7 +43,9 @@ public partial class Context : DbContext
             entity.Property(e => e.ClassroomId).HasColumnName("ClassroomID");
             entity.Property(e => e.Building).HasMaxLength(100);
             entity.Property(e => e.IsActive).HasDefaultValue(true);
-            entity.Property(e => e.RoomNumber).HasMaxLength(10);
+            entity.Property(e => e.RoomNumber)
+                .IsRequired()
+                .HasMaxLength(10);
         });
 
         modelBuilder.Entity<Course>(entity =>
@@ -52,7 +54,9 @@ public partial class Context : DbContext
 
             entity.Property(e => e.CourseId).HasColumnName("CourseID");
             entity.Property(e => e.CourseDescription).HasMaxLength(500);
-            entity.Property(e => e.CourseName).HasMaxLength(255);
+            entity.Property(e => e.CourseName)
+                .IsRequired()
+                .HasMaxLength(255);
             entity.Property(e => e.IsActive).HasDefaultValue(true);
         });
 
@@ -85,10 +89,16 @@ public partial class Context : DbContext
 
             entity.Property(e => e.InstructorId).HasColumnName("InstructorID");
             entity.Property(e => e.Department).HasMaxLength(100);
-            entity.Property(e => e.Email).HasMaxLength(255);
-            entity.Property(e => e.FirstName).HasMaxLength(100);
+            entity.Property(e => e.Email)
+                .IsRequired()
+                .HasMaxLength(255);
+            entity.Property(e => e.FirstName)
+                .IsRequired()
+                .HasMaxLength(100);
             entity.Property(e => e.IsActive).HasDefaultValue(true);
-            entity.Property(e => e.LastName).HasMaxLength(100);
+            entity.Property(e => e.LastName)
+                .IsRequired()
+                .HasMaxLength(100);
             entity.Property(e => e.PhoneNumber).HasMaxLength(15);
             entity.Property(e => e.UserId).HasColumnName("UserID");
         });
@@ -99,11 +109,17 @@ public partial class Context : DbContext
 
             entity.Property(e => e.StudentId).HasColumnName("StudentID");
             entity.Property(e => e.Address).HasMaxLength(255);
-            entity.Property(e => e.Email).HasMaxLength(255);
+            entity.Property(e => e.Email)
+                .IsRequired()
+                .HasMaxLength(255);
             entity.Property(e => e.EnrollmentDate).HasColumnType("datetime");
-            entity.Property(e => e.FirstName).HasMaxLength(100);
+            entity.Property(e => e.FirstName)
+                .IsRequired()
+                .HasMaxLength(100);
             entity.Property(e => e.IsActive).HasDefaultValue(true);
-            entity.Property(e => e.LastName).HasMaxLength(100);
+            entity.Property(e => e.LastName)
+                .IsRequired()
+                .HasMaxLength(100);
             entity.Property(e => e.PhoneNumber).HasMaxLength(15);
             entity.Property(e => e.UserId).HasColumnName("UserID");
         });
@@ -118,12 +134,18 @@ public partial class Context : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.IsActive).HasDefaultValue(true);
             entity.Property(e => e.LastLoginDate).HasColumnType("datetime");
-            entity.Property(e => e.PasswordHash).HasMaxLength(255);
-            entity.Property(e => e.Role).HasMaxLength(50);
+            entity.Property(e => e.PasswordHash)
+                .IsRequired()
+                .HasMaxLength(255);
+            entity.Property(e => e.Role)
+                .IsRequired()
+                .HasMaxLength(50);
             entity.Property(e => e.UpdatedDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.Username).HasMaxLength(100);
+            entity.Property(e => e.Username)
+                .IsRequired()
+                .HasMaxLength(100);
         });
 
         OnModelCreatingPartial(modelBuilder);

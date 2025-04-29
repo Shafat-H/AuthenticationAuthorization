@@ -7,11 +7,11 @@ public partial class User
 {
     public long UserId { get; set; }
 
-    public string Username { get; set; } = null!;
+    public string Username { get; set; }
 
-    public string PasswordHash { get; set; } = null!;
+    public string PasswordHash { get; set; }
 
-    public string Role { get; set; } = null!;
+    public string Role { get; set; }
 
     public DateTime? LastLoginDate { get; set; }
 
